@@ -138,6 +138,7 @@ class Timeline extends Widget
                     'span',
                     Html::a(
                         FA::icon('copyright'),
+                        $ev->source,
                         [
                             'style'       => 'color:#999999',
                             'target'      => '_blank',
