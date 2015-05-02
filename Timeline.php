@@ -115,12 +115,15 @@ class Timeline extends Widget
             if($ev->time){
                 $item.=Html::tag('span',Html::tag('i','',['class'=>'fa fa-clock-o']).' '.$ev->time,['class'=>'time']);
             }
+            if ($ev->email) {
+                $item .= Html::tag('span', $ev->email, ['class'=>'time']);
+            }
             if($ev->header){
                 $item.=Html::tag('h3',$ev->header,['class'=>'timeline-header '.(!$ev->body && !$ev->footer?'no-border':'')]);
             }
             $item.=Html::tag('div',$ev->body,['class'=>'timeline-body']);
             if($ev->footer){
-                $item.=Html::tag('div',$ev->footer,['timeline-footer']);
+                $item.=Html::tag('div',$ev->footer,['class' => 'timeline-footer']);
             }
             $res.=Html::tag('div',$item,['class'=>'timeline-item']);
 
