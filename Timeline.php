@@ -2,6 +2,7 @@
 
 namespace insolita\wgadminlte;
 
+use rmrevin\yii\fontawesome\FA;
 use yii\base\InvalidConfigException;
 use yii\helpers\Html;
 use yii\base\Widget;
@@ -116,10 +117,56 @@ class Timeline extends Widget
                 $item.=Html::tag('span',Html::tag('i','',['class'=>'fa fa-clock-o']).' '.$ev->time,['class'=>'time']);
             }
             if ($ev->email) {
-                $item .= Html::tag('span', $ev->email, ['class'=>'time']);
+                $item .= Html::tag(
+                    'span',
+                    Html::mailto(
+                        FA::icon('envelope'),
+                        $ev->email,
+                        [
+                            'class'       => 'time',
+                            'style'       => 'color:#999999',
+                            'data-toggle' => 'tooltip',
+                            'data-title'  => $ev->email
+                        ]
+                    ),
+                    ['class' => 'time']
+                );
             }
-            if($ev->header){
-                $item.=Html::tag('h3',$ev->header,['class'=>'timeline-header '.(!$ev->body && !$ev->footer?'no-border':'')]);
+
+            if ($ev->source) {
+                $item .= Html::tag(
+                    'span',
+                    Html::a(
+                        FA::icon('copyright'),
+                        [
+                            'style'       => 'color:#999999',
+                            'target'      => '_blank',
+                            'data-toggle' => 'tooltip',
+                            'data-title'  => $ev->source
+                        ]
+                    ),
+                    ['class' => 'time']
+                );
+            }
+            if ($ev->author) {
+                $item .= Html::tag(
+                    'span',
+                    FA::icon('users'),
+                    [
+                        'class'       => 'time',
+                        'data-toggle' => 'tooltip',
+                        'data-title'  => $ev->author
+                    ]
+                );
+            }
+            if ($ev->header) {
+                $item .= Html::tag(
+                    'h3',
+                    $ev->header,
+                    [
+                        'class' => 'timeline-header ' . (!$ev->body && !$ev->footer ? 'no-border' : ''),
+                    ]
+                );
             }
             $item.=Html::tag('div',$ev->body,['class'=>'timeline-body']);
             if($ev->footer){

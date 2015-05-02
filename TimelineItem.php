@@ -15,6 +15,8 @@ use yii\base\Object;
 class TimelineItem extends Object{
     public $time='';
     public $email='';
+    public $source='';
+    public $author='';
     public $header='';
     public $body='';
     public $footer='';
