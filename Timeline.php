@@ -114,11 +114,12 @@ class Timeline extends Widget
             $res.='<i class="'.$ev->iconClass.' bg-'.$ev->iconBg.'"></i>';
             $item='';
             if ($ev->header) {
+                $headerClass = ($ev->iconBg) ? 'bg-' . $ev->iconBg : '';
                 $item .= Html::tag(
                     'h3',
                     $ev->header,
                     [
-                        'class' => 'timeline-header ' . (!$ev->body && !$ev->footer ? 'no-border' : ''),
+                        'class' => 'timeline-header ' . $headerClass . ' ' .(!$ev->body && !$ev->footer ? 'no-border' : ''),
                     ]
                 );
             }
