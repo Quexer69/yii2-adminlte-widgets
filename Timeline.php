@@ -100,11 +100,12 @@ class Timeline extends Widget
         $res='';
         $realdata=is_null($this->dateFunc)?$data:call_user_func($this->dateFunc,$data);
         if(is_string($this->defaultDateBg)){
-            $res=Html::tag('span',$realdata,['class'=>'bg-'.$this->defaultDateBg]);
+            $res.=Html::tag('span',FA::icon('calendar') . ' ' .$realdata,['class'=>'bg-'.$this->defaultDateBg]);
         }elseif(is_callable($this->defaultDateBg)){
             $class=call_user_func($this->defaultDateBg,$data);
-            $res=Html::tag('span',$realdata,['class'=>'bg-'.$class]);
+            $res.=Html::tag('span',FA::icon('calendar') . ' ' . $realdata,['class'=>'bg-'.$class]);
         }
+
         return Html::tag('li',$res,['class'=>'time-label']);
     }
 
