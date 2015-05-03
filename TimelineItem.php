@@ -17,6 +17,7 @@ class TimelineItem extends Object{
     public $header='';
     public $body='';
     public $footer='';
+    public $itemClass='';
     public $iconClass='';
     public $iconBg='';
 

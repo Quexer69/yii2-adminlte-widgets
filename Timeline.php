@@ -126,7 +126,8 @@ class Timeline extends Widget
             if($ev->footer){
                 $item.=Html::tag('div',$ev->footer,['class' => 'timeline-footer']);
             }
-            $res.=Html::tag('div',$item,['class'=>'timeline-item']);
+            $itemClass = ($ev->itemClass) ? $ev->itemClass : '';
+            $res.=Html::tag('div',$item,['class'=>'timeline-item ' . $itemClass]);
 
         }else{
             throw new InvalidConfigException('event must be instanceof TimelineItem');
