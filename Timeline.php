@@ -113,53 +113,6 @@ class Timeline extends Widget
         if($ev instanceof TimelineItem){
             $res.='<i class="'.$ev->iconClass.' bg-'.$ev->iconBg.'"></i>';
             $item='';
-            if($ev->time){
-                $item.=Html::tag('span',Html::tag('i','',['class'=>'fa fa-clock-o']).' '.$ev->time,['class'=>'time']);
-            }
-            if ($ev->email) {
-                $item .= Html::tag(
-                    'span',
-                    Html::mailto(
-                        FA::icon('envelope'),
-                        $ev->email,
-                        [
-                            'class'       => 'time',
-                            'style'       => 'color:#999999',
-                            'data-toggle' => 'tooltip',
-                            'data-title'  => $ev->email
-                        ]
-                    ),
-                    ['class' => 'time']
-                );
-            }
-
-            if ($ev->source) {
-                $item .= Html::tag(
-                    'span',
-                    Html::a(
-                        FA::icon('copyright'),
-                        $ev->source,
-                        [
-                            'style'       => 'color:#999999',
-                            'target'      => '_blank',
-                            'data-toggle' => 'tooltip',
-                            'data-title'  => $ev->source
-                        ]
-                    ),
-                    ['class' => 'time']
-                );
-            }
-            if ($ev->author) {
-                $item .= Html::tag(
-                    'span',
-                    FA::icon('users'),
-                    [
-                        'class'       => 'time',
-                        'data-toggle' => 'tooltip',
-                        'data-title'  => $ev->author
-                    ]
-                );
-            }
             if ($ev->header) {
                 $item .= Html::tag(
                     'h3',
